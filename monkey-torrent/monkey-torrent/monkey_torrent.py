@@ -10,24 +10,32 @@ class MyForm(Form):
         # Define the Window title and window size
         self.Text = 'Monkey Torrent'
         self.Size = Size(500, 500)
+        self.Icon = Icon("favicon.ico")
 
         # Create the menus
         menuStrip = MenuStrip()
         menuItemFile = ToolStripMenuItem("File")
         menuStrip.Items.Add(menuItemFile)
-        menuItemTools = ToolStripMenuItem("Tools")
-        menuStrip.Items.Add(menuItemTools)
+        menuItemOptions = ToolStripMenuItem("Options")
+        menuStrip.Items.Add(menuItemOptions)
+        menuItemHelp = ToolStripMenuItem("Help")
+        menuStrip.Items.Add(menuItemHelp)
 
         # Create the File submenus
-        submNew = ToolStripMenuItem("New")
-        menuItemFile.DropDownItems.Add(submNew)
-        submOpen = ToolStripMenuItem("Open")
-        menuItemFile.DropDownItems.Add(submOpen)
+        submOpenFile = ToolStripMenuItem("Add Torrent from File...")
+        menuItemFile.DropDownItems.Add(submOpenFile)
+        submOpenURL = ToolStripMenuItem("Add Torrent from URL...")
+        menuItemFile.DropDownItems.Add(submOpenURL)
+        submOpenMagnet = ToolStripMenuItem("Add Magnet Link...")
+        menuItemFile.DropDownItems.Add(submOpenMagnet)
+        menuItemFile.DropDownItems.Add(ToolStripSeparator())
+        submCreateTorrent = ToolStripMenuItem("Create Torrent...")
+        menuItemFile.DropDownItems.Add(submCreateTorrent)
         menuItemFile.DropDownItems.Add(ToolStripSeparator())
         submExit = ToolStripMenuItem("Exit")
         menuItemFile.DropDownItems.Add(submExit)
         submExit.Click += self.OnExit
-
+        
         # Add menu to top
         self.Controls.Add(menuStrip)
         self.MainMenuStrip = menuStrip
